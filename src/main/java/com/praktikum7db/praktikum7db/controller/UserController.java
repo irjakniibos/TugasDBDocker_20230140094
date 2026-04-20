@@ -1,31 +1,19 @@
 package com.praktikum7db.praktikum7db.controller;
 
+import com.praktikum7db.praktikum7db.model.User;
 import com.praktikum7db.praktikum7db.service.UserService;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/users")
 public class UserController {
     private final UserService userService;
 
-    // Constructor Injection
     public UserController(UserService userService) {
         this.userService = userService;
     }
-
-    // Tambahkan di dalam class UserController
-
-    @GetMapping
-    public List<User> getAllUsers() {
-        return userService.getAllUsers();
-    }
-
-    @GetMapping("/{id}")
-    public User getUserById(@PathVariable String id) {
-        return userService.getUserById(id);
-    }
-
-    // Tambahkan di dalam class UserController
 
     @PostMapping
     public String createUser(@RequestBody User request) {
@@ -33,4 +21,25 @@ public class UserController {
         return "user created successfully";
     }
 
+    @GetMapping
+    public List<User> getAllUsers() {
+        return userService.getAllUsers();
+    }
+
+    @DeleteMapping("/{id}")
+    public String deleteUser(@PathVariable String id) {
+        userService.deleteUser(id);
+        return "user deleted successfully";
+    }
+
+    @GetMapping("/{id}")
+    public User getUserById(@PathVariable String id) {
+        return userService.getUserById(id);
+    }
+
+    @PutMapping("/{id}")
+    public String updateUser(@PathVariable String id, @RequestBody User request) {
+        userService.updateUser(id, request);
+        return  "user updated successfully";
+    }
 }
