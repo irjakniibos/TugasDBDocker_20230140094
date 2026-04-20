@@ -1,0 +1,9 @@
+package com.praktikum7db.praktikum7db.repository;
+
+import com.praktikum7db.praktikum7db.model.User;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+@Repository
+public interface UserRepository extends JpaRepository<User, String> {
+}
