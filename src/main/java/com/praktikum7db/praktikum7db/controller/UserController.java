@@ -12,4 +12,16 @@ public class UserController {
     public UserController(UserService userService) {
         this.userService = userService;
     }
+
+    // Tambahkan di dalam class UserController
+
+    @GetMapping
+    public List<User> getAllUsers() {
+        return userService.getAllUsers();
+    }
+
+    @GetMapping("/{id}")
+    public User getUserById(@PathVariable String id) {
+        return userService.getUserById(id);
+    }
 }
