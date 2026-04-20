@@ -24,4 +24,13 @@ public class UserController {
     public User getUserById(@PathVariable String id) {
         return userService.getUserById(id);
     }
+
+    // Tambahkan di dalam class UserController
+
+    @PostMapping
+    public String createUser(@RequestBody User request) {
+        userService.addUser(request);
+        return "user created successfully";
+    }
+
 }
